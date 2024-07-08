@@ -7,7 +7,7 @@ const SignUp = () => {
 
   const [inputs, setInputs] = useState({
     fullName: '',
-    userName:'',
+    username:'',
     password: '',
     confirmPassword:'',
     gender:'',
@@ -49,7 +49,7 @@ const SignUp = () => {
               <span className='text-base text-white label-text'>Username</span>
             </label>
             <input type="text" placeholder='Enter username' className='w-full input input-bordered h-10'
-            value={inputs.userName} onChange={ (e)=> setInputs({...inputs, userName: e.target.value}) }
+            value={inputs.username} onChange={ (e)=> setInputs({...inputs, username: e.target.value}) }
             />
           </div>
 
@@ -57,7 +57,7 @@ const SignUp = () => {
             <label className='label'>
               <span className='text-base text-white label-text'>Password</span>
             </label>
-            <input type="text" placeholder='Enter Password' className='w-full input input-bordered h-10' 
+            <input type="password" placeholder='Enter Password' className='w-full input input-bordered h-10' 
              value={inputs.password} onChange={ (e)=> setInputs({...inputs, password:e.target.value}) } 
             />
           </div>
@@ -66,7 +66,7 @@ const SignUp = () => {
             <label className='label'>
               <span className='text-base text-white label-text'>Confirm Password</span>
             </label>
-            <input type="text" placeholder='Enter Confirm Password' className='w-full input input-bordered h-10' 
+            <input type="password" placeholder='Enter Confirm Password' className='w-full input input-bordered h-10' 
              value={inputs.confirmPassword} onChange={ (e)=> setInputs({...inputs, confirmPassword:e.target.value}) } 
             />
           </div>
@@ -78,7 +78,10 @@ const SignUp = () => {
           </Link>
 
           <div>
-            <button className='btn btn-block btn-sm mt-2 border-slate-700'>Sign UP</button>
+            <button className='btn btn-block btn-sm mt-2 border-slate-700'
+            disabled={loading} >
+            {loading ? <span className='loading loading-spinner'></span> : "Sign Up" }
+            </button>
           </div>
 
         </form>

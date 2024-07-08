@@ -4,10 +4,10 @@ import { useAuthContext } from '../context/AuthContext';
 
 const useSignup = () => {
   const [loading, setloading]= useState(false);
-  const {authUser, setAuthUser} = useAuthContext();
+  const { setAuthUser } = useAuthContext();
 
-  const signup = async({fullName, userName, password, confirmPassword,gender})=>{
-    const success= handleInputErrors({fullName, userName, password, confirmPassword,gender});
+  const signup = async({fullName, username, password, confirmPassword,gender})=>{
+    const success= handleInputErrors({fullName, username, password, confirmPassword,gender});
     if(!success) return;
 
     setloading(true);
@@ -16,7 +16,7 @@ const useSignup = () => {
       const res = await fetch("/api/auth/signup",{
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({fullName, userName, password, confirmPassword,gender}),
+        body: JSON.stringify({fullName, username, password, confirmPassword,gender}),
       })
 
       const data= await res.json();
@@ -42,8 +42,8 @@ const useSignup = () => {
 
 export default useSignup;
 
-function handleInputErrors({fullName, userName, password, confirmPassword,gender}){
-  if(!fullName || !userName || !password || !confirmPassword || !gender) {
+function handleInputErrors({fullName, username, password, confirmPassword,gender}){
+  if(!fullName || !username || !password || !confirmPassword || !gender) {
     toast.error("Please fill in all fields");
     return false;
   }
